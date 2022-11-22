@@ -31,7 +31,6 @@ export const reviewsMovie = movieId => {
 };
 
 export const searchMovie = search => {
-  console.log(search);
   return fetch(`${ORIGIN}search/movie?api_key=${KEY}&query=${search}`).then(
     response => {
       return response.json();
