@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { reviewsMovie } from 'api/requests';
+import { reviewsMovie } from '../../api/requests';
 import { ReviewsItem } from './ReviewsItem/ReviewsItem';
 
 const Reviews = () => {
@@ -20,7 +20,7 @@ const Reviews = () => {
 
   return (
     <ul>
-      {movie ? (
+      {movie.length > 0 ? (
         movie.map(({ author, content, id }) => (
           <ReviewsItem author={author} content={content} key={id} />
         ))
