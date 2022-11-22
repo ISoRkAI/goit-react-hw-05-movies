@@ -1,8 +1,8 @@
-import { castMovie } from 'api/Requests';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import placeholder from '../../images/placeholder.png';
-import { Img } from './CastStyled';
+
+import { CastItem } from './CastItem/CastItem';
+import { castMovie } from 'api/requests';
 
 const Cast = () => {
   const { movieId } = useParams();
@@ -19,24 +19,18 @@ const Cast = () => {
   }
 
   return (
-    <>
-      <ul>
-        {movie.map(({ original_name, profile_path, character, id }) => (
-          <li key={id}>
-            <Img
-              src={
-                profile_path
-                  ? `https://image.tmdb.org/t/p/w500/${profile_path}`
-                  : placeholder
-              }
-              alt=""
-            />
-            <p>{original_name}</p>
-            <p>Character: {character}</p>
-          </li>
-        ))}
-      </ul>
-    </>
+    <ul>
+      {movie.map(({ original_name, profile_path, character, id }) => {
+        return (
+          <CastItem
+            name={original_name}
+            profile={profile_path}
+            character={character}
+            key={id}
+          />
+        );
+      })}
+    </ul>
   );
 };
 export default Cast;

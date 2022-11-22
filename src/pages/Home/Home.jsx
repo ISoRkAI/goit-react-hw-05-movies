@@ -1,10 +1,11 @@
-import apiWeekMovies from 'api/Requests';
 import { Suspense, useEffect, useState } from 'react';
-import { Link, Outlet, useLocation } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+
+import apiWeekMovies from 'api/requests';
+import { HomeItem } from './HomeItem/HomeItem';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
-  const location = useLocation();
 
   useEffect(() => {
     apiWeekMovies.fetchDataWeek().then(({ results }) => {
@@ -16,15 +17,9 @@ const Home = () => {
     <main>
       <h1>Trends of the week</h1>
       <ul>
-        {movies.map(({ title, id }) => {
-          return (
-            <li key={id}>
-              <Link to={`/movies/${id}`} state={{ from: location }}>
-                {title}
-              </Link>
-            </li>
-          );
-        })}
+        {movies.map(({ title, id }) => (
+          <HomeItem title={title} id={id} key={id} />
+        ))}
       </ul>
       <Suspense>
         <Outlet />

@@ -1,4 +1,5 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
+
 import { Container } from './CastAndReviewsStyled';
 
 export const CastAndReviews = ({ movieId }) => {
@@ -7,13 +8,18 @@ export const CastAndReviews = ({ movieId }) => {
     { href: `/movies/${movieId}/reviews`, text: 'Reviews' },
   ];
 
+  const location = useLocation();
+  const from = location.state?.from ?? '/movies';
+
   return (
     <Container>
       <p>Additional information</p>
       <ul>
         {navItem.map(({ href, text }) => (
           <li key={text}>
-            <NavLink to={href}>{text}</NavLink>
+            <NavLink to={href} state={{ from }}>
+              {text}
+            </NavLink>
           </li>
         ))}
       </ul>

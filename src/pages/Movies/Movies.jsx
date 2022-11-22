@@ -1,12 +1,13 @@
-import { searchMovie } from 'api/Requests';
 import { Suspense, useEffect, useState } from 'react';
-import { Link, Outlet, useLocation, useSearchParams } from 'react-router-dom';
+import { Outlet, useSearchParams } from 'react-router-dom';
+
 import { SearchMovie } from '../../components/SearchMovies/SearchMovies';
+import { searchMovie } from 'api/requests';
+import { MoviesItem } from './MuviesItem/MuviesItem';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
-  const location = useLocation();
   const query = searchParams.get('query') ?? '';
 
   useEffect(() => {
@@ -29,15 +30,9 @@ const Movies = () => {
       <SearchMovie onSubmit={formSubmit} />
       <ul>
         {movies.length > 0 &&
-          movies.map(({ original_title, id }) => {
-            return (
-              <li key={id}>
-                <Link to={`/movies/${id}`} state={{ from: location }}>
-                  {original_title}
-                </Link>
-              </li>
-            );
-          })}
+          movies.map(({ original_title, id }) => (
+            <MoviesItem title={original_title} id={id} key={id} />
+          ))}
         <Suspense>
           <Outlet />
         </Suspense>

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import { Input } from './SearchMoviesStyled';
 
 export const SearchMovie = ({ onSubmit }) => {
