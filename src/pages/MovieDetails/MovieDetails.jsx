@@ -1,7 +1,7 @@
 import { Suspense, useEffect, useState } from 'react';
 import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
 
-import { fetchMovie } from 'api/requests';
+import { fetchMovie } from 'components/api/requests';
 import { CastAndReviews } from 'components/CastAndReviews/CastAndReviews';
 
 import {

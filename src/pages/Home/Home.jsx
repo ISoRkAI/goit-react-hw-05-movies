@@ -1,7 +1,7 @@
 import { Suspense, useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 
-import apiWeekMovies from 'api/requests';
+import apiWeekMovies from 'components/api/requests';
 import { HomeItem } from './HomeItem/HomeItem';
 
 const Home = () => {

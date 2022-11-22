@@ -2,7 +2,7 @@ import { Suspense, useEffect, useState } from 'react';
 import { Outlet, useSearchParams } from 'react-router-dom';
 
 import { SearchMovie } from '../../components/SearchMovies/SearchMovies';
-import { searchMovie } from 'api/requests';
+import { searchMovie } from 'components/api/requests';
 import { MoviesItem } from './MuviesItem/MuviesItem';
 
 const Movies = () => {

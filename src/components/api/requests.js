@@ -1,4 +1,4 @@
-import { KEY, ORIGIN } from '../constants/credential';
+import { KEY, ORIGIN } from '../../constants/credential';
 
 async function fetchDataWeek() {
   const response = await fetch(`${ORIGIN}trending/movie/week?api_key=${KEY}`);
